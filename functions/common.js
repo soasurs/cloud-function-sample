@@ -12,15 +12,7 @@ AV.Cloud.define("hello_with_option_not_fetch_user", {fetchUser: false}, function
 
 AV.Cloud.define("hello_with_option_fetch_user", {fetchUser: true}, function(req) {
   return {
-    "currentUser": req.currentUser
+    "sessionToken": req.sessionToken
   }
-})
-
-AV.Cloud.define("hello_rpc", {fetchUser: false}, function(req) {
-  const query = new AV.Query('Todo');
-  return query.equalTo('objectId', req.params.objectId).find().then((todo) => {
-    console.log(todo)
-    return todo
-  })
 })
 
